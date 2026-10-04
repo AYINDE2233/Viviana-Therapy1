@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import BookingModal from "@/components/BookingModal";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 interface Review {
@@ -88,8 +89,7 @@ const MORE_REVIEWS: Review[] = [
 export default function Home() {
   const [reviews, setReviews] = useState<Review[]>(INITIAL_REVIEWS);
   const [hasLoadedMore, setHasLoadedMore] = useState<boolean>(false);
-  // const [isBookingOpen, setIsBookingOpen] = useState<boolean>(false);
-
+const [isBookingOpen, setIsBookingOpen] = useState(false);
   const handleLoadMore = () => {
     setReviews((prev) => [...prev, ...MORE_REVIEWS]);
     setHasLoadedMore(true);
@@ -704,7 +704,12 @@ export default function Home() {
         </div>
       </footer>
 
-      {/* BOOKING MODAL */}
+      {isBookingOpen && (
+        <BookingModal
+          isOpen={isBookingOpen}
+          onClose={() => setIsBookingOpen(false)}
+        />
+      )}
     </main>
   );
 }
