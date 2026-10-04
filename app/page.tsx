@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import BookingModal from "../components/BookingModal";
-
+import Navbar from "@/components/Navbar";
 interface Review {
   id: number;
   name: string;
@@ -89,7 +88,7 @@ const MORE_REVIEWS: Review[] = [
 export default function Home() {
   const [reviews, setReviews] = useState<Review[]>(INITIAL_REVIEWS);
   const [hasLoadedMore, setHasLoadedMore] = useState<boolean>(false);
-  const [isBookingOpen, setIsBookingOpen] = useState<boolean>(false);
+  // const [isBookingOpen, setIsBookingOpen] = useState<boolean>(false);
 
   const handleLoadMore = () => {
     setReviews((prev) => [...prev, ...MORE_REVIEWS]);
@@ -98,40 +97,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-[#faf9f6]">
-      {/* NAVBAR */}
-      <nav className="fixed w-full z-40 bg-gradient-to-b from-black/50 via-black/20 to-transparent text-white py-5 px-6 md:px-12 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-full bg-[#ea7a24] flex items-center justify-center text-white text-base shadow-sm">
-            🍃
-          </div>
-          <span className="font-serif text-2xl tracking-wide text-white font-normal drop-shadow-sm">
-            Therapy by Vivianaspa
-          </span>
-        </Link>
-
-        {/* Desktop Navigation Links */}
-        <div className="hidden md:flex items-center gap-10 text-xs tracking-[0.2em] uppercase font-medium text-stone-200">
-          <Link href="/" className="text-[#ea7a24] font-semibold">
-            Home
-          </Link>
-          <Link href="/contact" className="hover:text-white transition">
-            Contact
-          </Link>
-          <Link
-            href="/gift-card-balance"
-            className="hover:text-white transition"
-          >
-            Check Gift Card Balance
-          </Link>
-        </div>
-
-        <button
-          onClick={() => setIsBookingOpen(true)}
-          className="bg-[#ea7a24] hover:bg-[#d66a1a] text-white px-7 py-3 rounded-full text-xs uppercase tracking-wider font-medium transition shadow-lg"
-        >
-          Book Appointment
-        </button>
-      </nav>
+      <Navbar />
 
       {/* HERO SECTION */}
       <section className="relative h-screen flex flex-col items-center justify-end pb-12 md:pb-20 text-center px-4 overflow-hidden">
@@ -676,13 +642,13 @@ export default function Home() {
             <h4 className="text-white font-serif text-xl mb-6">Contact Us</h4>
             <ul className="space-y-3 text-sm text-stone-200 font-light">
               <li>Available for both Incall & Outcall</li>
-              <li>+1 (615) 457-9792</li>
+              <li>+1 (504) 342-7251</li>
               <li>
                 <a
                   href="mailto:sdVivianaspa1005@gmail.com"
                   className="hover:underline"
                 >
-                  sdVivianaspa1005@gmail.com
+                  vivianakim622@gmail.com
                 </a>
               </li>
             </ul>
@@ -739,10 +705,6 @@ export default function Home() {
       </footer>
 
       {/* BOOKING MODAL */}
-      <BookingModal
-        isOpen={isBookingOpen}
-        onClose={() => setIsBookingOpen(false)}
-      />
     </main>
   );
 }

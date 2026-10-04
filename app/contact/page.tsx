@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-
+import Navbar from "@/components/Navbar";
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
@@ -87,41 +87,7 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-[#f4efea] text-stone-800">
-      {/* HEADER / NAVIGATION */}
-      <header className="bg-[#f4efea] border-b border-stone-200/60 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-full bg-[#ea7a24] flex items-center justify-center text-white font-serif font-bold italic text-sm">
-              🍃
-            </div>
-            <span className="font-serif text-2xl tracking-wide text-stone-800">
-              Therapy by Vivianaspa
-            </span>
-          </Link>
-
-          <nav className="hidden md:flex items-center gap-8 font-medium text-xs tracking-wider text-stone-600 uppercase">
-            <Link href="/" className="hover:text-stone-900 transition">
-              HOME
-            </Link>
-            <Link href="/contact" className="text-[#ea7a24] font-bold">
-              CONTACT
-            </Link>
-            <Link
-              href="/gift-card-balance"
-              className="hover:text-stone-900 transition"
-            >
-              CHECK GIFT CARD BALANCE
-            </Link>
-          </nav>
-
-          <Link
-            href="/#book"
-            className="bg-[#ea7a24] hover:bg-[#d66a1a] text-white px-5 py-2.5 rounded-full text-sm font-medium transition shadow-sm"
-          >
-            Book Appointment
-          </Link>
-        </div>
-      </header>
+      <Navbar />
 
       {/* HERO SECTION */}
       <section className="bg-[#4a3525] text-white py-20 px-6 text-center relative overflow-hidden rounded-b-[40px]">
@@ -390,7 +356,8 @@ export default function ContactPage() {
             Have you enjoyed our services?
           </h3>
           <p className="text-stone-500 text-sm font-light">
-            We value your feedback. Leave a review to let us know about your experience!
+            We value your feedback. Leave a review to let us know about your
+            experience!
           </p>
           <button
             onClick={() => setIsReviewModalOpen(true)}
